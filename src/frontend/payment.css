@@ -93,6 +93,73 @@ header {
   left: -10px;
 }
 
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #fff4f0;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
+  gap: 40px;
+}
+
+.checkout-form {
+  flex: 2;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.checkout-form h2 {
+  margin-top: 20px;
+}
+
+.checkout-form input,
+.checkout-form textarea {
+  display: block;
+  width: 100%;
+  margin: 10px 0 15px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.tick {
+  color: green;
+  display: none;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.summary {
+  flex: 1;
+  background: #fdf7f4;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.summary input {
+  width: 100%;
+  padding: 8px;
+  margin: 8px 0;
+}
+
+.summary button {
+  padding: 8px 16px;
+  background: #561C24;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+
 /* to make footer in the bottom */
 html, body {
   height: 100%;

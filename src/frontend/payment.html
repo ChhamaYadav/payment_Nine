@@ -14,15 +14,15 @@
 </div>
 <header>
     <div class="header-left">
-        <a href="index.html" class="no-style-link"><h2>Nine.</h2></a>
+        <a href="http://localhost:63342/Nine_Home/src/main/index.html" class="no-style-link"><h2>Nine.</h2></a>
     </div>
     <div class="header-right">
 
-        <a href="cart.html" class="bucket profile-only" title="My Cart">
+        <a href="http://localhost:63342/Nine_Home/src/main/cart.html" class="bucket profile-only" title="My Cart">
             <i class="fas fa-shopping-bag"></i>
             <span id="cart-count-badge">0</span>
         </a>
-        <a href="wishlist.html" class="wishlist profile-only" title="Wishlist">
+        <a href="http://localhost:63342/Nine_Home/src/main/wishlist.html" class="wishlist profile-only" title="Wishlist">
             <i class="fas fa-heart"></i>
         </a>
         <!-- Auth Links -->
@@ -31,7 +31,45 @@
         </a>
     </div>
 </header>
-<main></main>
+<main>
+    <body>
+    <div class="container">
+        <main class="checkout-form">
+            <h2>Contact Info</h2>
+            <input type="email" id="contact" placeholder="Enter your contact number" required />
+            <input type="email" id="email" placeholder="Enter your email" required />
+            <span class="tick" id="emailTick">&#10004;</span>
+
+            <h2>Shipping Address</h2>
+            <textarea id="address" placeholder="Enter your full shipping address" required></textarea>
+            <span class="tick" id="addressTick">&#10004;</span>
+
+            <h2>Payment Method</h2>
+            <label>Card Number</label>
+            <input type="text" id="cardNumber" maxlength="19" placeholder="1234 5678 9012 3456" required />
+            <label>Expiry Date</label>
+            <input type="text" id="expiry" placeholder="MM/YY" maxlength="5" required />
+            <label>CVC / CVV</label>
+            <input type="text" id="cvv" maxlength="4" placeholder="123" required />
+            <label>Cardholder Name</label>
+            <input type="text" id="cardName" placeholder="John Smith" required />
+            <span class="tick" id="cardTick">&#10004;</span>
+
+            <label><input type="checkbox" id="sameAddress" checked /> Billing address same as shipping</label>
+        </main>
+
+        <aside class="summary">
+            <h3>Order Summary</h3>
+            <p>Items Total: ₹2000</p>
+            <label for="coupon">Coupon Code:</label>
+            <input type="text" id="coupon" placeholder="Enter code"/>
+            <button onclick="applyCoupon()">Apply</button>
+            <p id="discount"></p>
+            <h4>Total: ₹<span id="total">2000</span></h4>
+        </aside>
+    </div>
+    </body>
+</main>
 <!-- Footer -->
 <footer>
     <footer class="site-footer">
