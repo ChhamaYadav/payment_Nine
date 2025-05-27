@@ -5,15 +5,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AddressRequest {
+public class CartSummary {
     private Long userId;
-    private String street;
-    private String city;
-    private String pincode;
-    private String state;
-    private String country;
+    private List<String> items;
+    private int quantity;
+    private double totalPrice;
 }
