@@ -1,6 +1,7 @@
 package org.example.Controller;
 
 import com.razorpay.RazorpayException;
+import org.apache.commons.codec.binary.Hex;
 import org.example.Service.PaymentService;
 import org.example.dto.PaymentRequest;
 import org.json.JSONObject;
@@ -8,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
 
 import static com.razorpay.Utils.verifySignature;
 
@@ -41,7 +45,7 @@ public class PaymentController {
             JSONObject event=new JSONObject(payload);
             String eventType=event.getString("event");
 
-            if("payment.capture".equals(eventType)) {
+            if("payment.captured".equals(eventType)) {
                 JSONObject payment = event
                         .getJSONObject("payload")
                         .getJSONObject("payment")
@@ -68,9 +72,18 @@ public class PaymentController {
             }
             return ResponseEntity.ok("Event ignored");
 
-        } catch (RazorpayException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Webhook handling failed");
         }
+    }
+
+    private boolean verifySignature(String payload, String signature, String secret) throws Exception {
+        Mac mac = Mac.getInstance("HmacSHA256");
+        SecretKeySpec secretKey = new SecretKeySpec(secret.getBytes(), "HmacSHA256");
+        mac.init(secretKey);
+        byte[] hash = mac.doFinal(payload.getBytes());
+        String generatedSignature = new String(Hex.encodeHex(hash));
+        return generatedSignature.equals(signature);
     }
 }
