@@ -18,8 +18,8 @@ public class CartController {
     private CartService cartService;
 
     @GetMapping("/{userId}")
-    public ResponseEntity<CartSummary>getCart(@PathVariable Long userId){
-        CartSummary summary=cartService.getCartSummary(userId);
-        return ResponseEntity.ok(summary);
+    public ResponseEntity<CartSummary> getCartSummary(@PathVariable Long userId){
+        ResponseEntity<CartSummary> summary=cartService.getCartSummary(userId);
+        return summary;
     }
 }
