@@ -20,6 +20,7 @@ public class Address {
          private String pincode;
         private String state;
         private String country;
+        private String addressType;
     }
 
 

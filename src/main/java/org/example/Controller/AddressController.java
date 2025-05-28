@@ -23,6 +23,4 @@ public class AddressController {
         addressService.saveAddress(addressRequest);
         return  ResponseEntity.ok("Address saved");
     }
-
-
 }

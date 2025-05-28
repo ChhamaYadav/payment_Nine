@@ -22,8 +22,10 @@ public class AddressService {
         address.setState(addressRequest.getState());
         address.setPincode(addressRequest.getPincode());
         address.setCountry(addressRequest.getCountry());
+        address.setAddressType(addressRequest.getAddressType());
 
         addressRepository.save(address);
+        System.out.println("address saved");
 
     }
 }
