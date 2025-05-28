@@ -1,11 +1,14 @@
 package org.example.Service;
 
 
+import org.example.Entity.Address;
 import org.example.Entity.AddressRepository;
-import org.example.dto.Address;
+
 import org.example.dto.AddressRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class AddressService {
 
     @Autowired
@@ -21,5 +24,6 @@ public class AddressService {
         address.setCountry(addressRequest.getCountry());
 
         addressRepository.save(address);
+
     }
 }
