@@ -13,4 +13,5 @@ public class CouponRequest {
 
     private Long userId;
     private String CouponCode;
+    private double totalAmount;
 }
