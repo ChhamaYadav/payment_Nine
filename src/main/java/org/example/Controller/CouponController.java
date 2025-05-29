@@ -20,6 +20,7 @@ public class CouponController {
 
     @PostMapping("/apply")
     public ResponseEntity<CouponResponse> applyCoupon(@RequestBody CouponRequest request) {
+        System.out.println("Coupon Applied");
         boolean isValid = couponService.applyCoupon(request);
 //        ResponseEntity.ok(isValid ? "Coupon applied" : "Invalid coupon");
         double discountedAmount = request.getTotalAmount();
@@ -28,7 +29,7 @@ public class CouponController {
             switch (request.getCouponCode()) {
                 case "FIRST10":
                 case "WELCOME100":
-                    discountedAmount -= 100;
+                    discountedAmount -= 100.0;
                     message = "Coupon applied successfully !";
                     break;
                 default:

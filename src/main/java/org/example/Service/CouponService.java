@@ -6,6 +6,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class CouponService {
     public boolean applyCoupon(CouponRequest couponRequest) {
-        return "FIRST".equals(couponRequest.getCouponCode());
+        return "FIRST10".equals(couponRequest.getCouponCode());
     }
 }
