@@ -17,6 +17,7 @@ public class CartService {
     RestTemplate  restTemplate=new RestTemplate();
 
     public ResponseEntity<CartSummary> getCartSummary(Long userId) {
+        System.out.println("Calling http://localhost:8082/cart/details for summary" );
         String url=cartApiUrl+"/cart/details/"+userId;
         ResponseEntity<CartSummary> response= restTemplate.getForEntity(url, CartSummary.class);
         return new ResponseEntity<>(response.getBody(),response.getStatusCode());

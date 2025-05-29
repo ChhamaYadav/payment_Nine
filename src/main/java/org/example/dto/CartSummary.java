@@ -13,7 +13,9 @@ import java.util.List;
 @AllArgsConstructor
 public class CartSummary {
     private Long userId;
-    private List<String> items;
+    private Long productId;
+    private String productName;
+    private double price;
     private int quantity;
     private double totalPrice;
 }
