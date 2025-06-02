@@ -24,6 +24,7 @@ public class PaymentController {
 
     @PostMapping("/initiate")
     public ResponseEntity<String> initiatePayment(@RequestBody PaymentRequest paymentRequest){
+        System.out.println("payment initiated");
         String paymenturl=paymentService.initiatePayment(paymentRequest);
         return ResponseEntity.ok(paymenturl);
     }

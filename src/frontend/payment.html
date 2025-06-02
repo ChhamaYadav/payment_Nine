@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="payment.css">
     <script src="payment.js" defer></script>
 </head>
-
+<body>
 <div class="promo-bar">
     <p id="promoText">🎉 Free Shipping on All Orders in India above 2000INR! 🎉</p>
 </div>
@@ -92,12 +92,18 @@
         <!-- Order Summary Sidebar -->
         <aside class="summary">
             <h3>Order Summary</h3>
-            <p>Items Total: ₹2000</p>
+
+            <div id="itemList"></div> <!-- For listing items -->
+
+            <p id="itemsTotal">Items Total: ₹0</p>
+
             <label for="coupon">Coupon Code:</label>
             <input type="text" id="coupon" placeholder="Enter code" />
-            <button onclick="applyCoupon()">Apply</button>
-            <p id="discount"></p>
-            <h4>Total: ₹<span id="total">2000</span></h4>
+            <button id="applyCouponBtn">Apply</button>
+
+            <p id="discount">Discount: ₹0</p>
+            <h4>Total: ₹<span id="total">0</span></h4>
+
             <a href="#" class="checkout-btn" id="proceedCheckout">Proceed to Checkout</a>
         </aside>
     </div>
@@ -113,9 +119,9 @@
 <!--            <p id="discount"></p>-->
 <!--            <h4>Total: ₹<span id="total">2000</span></h4>-->
 <!--        </aside>-->
-    </div>
-    </body>
-</main>
+
+</body>
+
 <!-- Footer -->
 <footer>
     <footer class="site-footer">

@@ -82,6 +82,44 @@ function addNewAddress() {
 //    });
 //});
 
+const userId = 12; // Replace this dynamically if needed
+
+window.addEventListener('DOMContentLoaded', () => {
+  fetchCartSummary();
+
+  document.getElementById('applyCouponBtn').addEventListener('click', applyCoupon);
+});
+
+async function fetchCartSummary() {
+  try {
+    const response = await fetch(`http://localhost:9091/payment/cartsummary/${userId}`);
+    if (!response.ok) throw new Error('Failed to load cart summary');
+
+    const data = await response.json();
+    console.log('Cart Data:', data);
+
+    // Update total
+    document.getElementById('itemsTotal').innerText = `Items Total: ₹${data.totalAmount.toFixed(2)}`;
+    document.getElementById('total').innerText = data.totalAmount.toFixed(2);
+
+    // Optionally list all items
+    const itemList = document.getElementById('itemList');
+    itemList.innerHTML = ''; // Clear existing items
+
+    data.items.forEach(item => {
+      const itemEl = document.createElement('p');
+      itemEl.textContent = `${item.productName} × ${item.quantity} = ₹${item.total.toFixed(2)}`;
+      itemList.appendChild(itemEl);
+    });
+
+  } catch (error) {
+    console.error('Error fetching cart summary:', error.message);
+  }
+}
+
+
+
+
 
 
 
