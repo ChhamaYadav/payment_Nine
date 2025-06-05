@@ -1,50 +1,50 @@
+document.addEventListener("DOMContentLoaded", () => {
+    const toggles = document.querySelectorAll('.dropdown-toggle');
 
-document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+    toggles.forEach(toggle => {
         toggle.addEventListener('click', () => {
-            const sectionId = toggle.dataset.target;
-            const section = document.getElementById(sectionId);
-            section.classList.toggle('collapsed');
-            toggle.classList.toggle('rotated');
+            const targetId = toggle.dataset.target;
+            const targetSection = document.getElementById(targetId);
+
+            // Close all sections
+            document.querySelectorAll('.accordion-section').forEach(section => {
+                if (section !== targetSection) {
+                    section.classList.remove('active');
+                }
+            });
+
+            // Toggle current section
+            targetSection.classList.toggle('active');
+        });
+    });
+
+    // Open first accordion section by default
+    const firstSection = document.querySelector('.accordion-section');
+    if (firstSection) {
+        firstSection.classList.add('active');
+    }
+
+    // Contact Info validation
+    document.getElementById('contactNumber').addEventListener('blur', validateContactInfo);
+    document.getElementById('contactEmail').addEventListener('blur', validateContactInfo);
+
+    // Apply coupon button
+    document.getElementById('applyCouponBtn').addEventListener('click', applyCoupon);
+
+    // Fetch cart summary
+    fetchCartSummary();
+
+    // Tick display on input blur
+    document.querySelectorAll('input, textarea').forEach(input => {
+        input.addEventListener('blur', () => {
+            if (input.value.trim() !== '') {
+                const tickId = input.id + 'Tick';
+                const tick = document.getElementById(tickId);
+                if (tick) tick.style.display = 'inline';
+            }
         });
     });
 });
-
-document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
-    toggle.addEventListener('click', (e) => {
-        const sectionId = toggle.dataset.target;
-        const section = document.getElementById(sectionId);
-        section.classList.toggle('collapsed');
-        toggle.classList.toggle('rotated');
-    });
-});
-
-// Simple validation simulation
-document.querySelectorAll('input, textarea').forEach(input => {
-  input.addEventListener('blur', () => {
-    if (input.value.trim() !== '') {
-      const tickId = input.id + 'Tick';
-      const tick = document.getElementById(tickId);
-      if (tick) tick.style.display = 'inline';
-    }
-  });
-});
-
-function applyCoupon() {
-  const code = document.getElementById('coupon').value.trim();
-  const totalEl = document.getElementById('total');
-  const discountEl = document.getElementById('discount');
-  let total = 2000;
-
-  if (code === 'SAVE10') {
-    total -= 200;
-    discountEl.textContent = "Coupon applied: -₹200";
-  } else {
-    discountEl.textContent = "Invalid code";
-  }
-  totalEl.textContent = total;
-}
-
 
 function validateContactInfo() {
     const number = document.getElementById('contactNumber').value.trim();
@@ -52,18 +52,29 @@ function validateContactInfo() {
     const tick = document.getElementById('contactTick');
 
     if (number && email.includes('@')) {
-        tick.style.display = 'inline'; // ✅ show green tick
+        tick.style.display = 'inline';
         document.getElementById('contactSection').classList.add('completed');
     } else {
-        tick.style.display = 'none'; // hide tick
+        tick.style.display = 'none';
         document.getElementById('contactSection').classList.remove('completed');
     }
 }
 
-// Trigger validation on blur or submit
-document.getElementById('contactNumber').addEventListener('blur', validateContactInfo);
-document.getElementById('contactEmail').addEventListener('blur', validateContactInfo);
+function applyCoupon() {
+    const code = document.getElementById('coupon').value.trim();
+    const totalEl = document.getElementById('total');
+    const discountEl = document.getElementById('discount');
+    let total = 2000;
 
+    if (code === 'SAVE10') {
+        total -= 200;
+        discountEl.textContent = "Coupon applied: -₹200";
+    } else {
+        discountEl.textContent = "Invalid code";
+    }
+
+    totalEl.textContent = total;
+}
 
 function addNewAddress() {
     const addressGroup = document.querySelector('.address-group');
@@ -75,51 +86,27 @@ function addNewAddress() {
     addressGroup.appendChild(newTextarea);
 }
 
-//document.querySelectorAll('.checkout-section h2').forEach(header => {
-//    header.addEventListener('click', () => {
-//        const section = header.parentElement;
-//        section.classList.toggle('collapsed'); // Add CSS for .collapsed
-//    });
-//});
-
-const userId = 12; // Replace this dynamically if needed
-
-window.addEventListener('DOMContentLoaded', () => {
-  fetchCartSummary();
-
-  document.getElementById('applyCouponBtn').addEventListener('click', applyCoupon);
-});
+const userId = 12;
 
 async function fetchCartSummary() {
-  try {
-    const response = await fetch(`http://localhost:9091/payment/cartsummary/${userId}`);
-    if (!response.ok) throw new Error('Failed to load cart summary');
+    try {
+        const response = await fetch(`http://localhost:9091/payment/cartsummary/${userId}`);
+        if (!response.ok) throw new Error('Failed to load cart summary');
 
-    const data = await response.json();
-    console.log('Cart Data:', data);
+        const data = await response.json();
+        console.log('Cart Data:', data);
 
-    // Update total
-    document.getElementById('itemsTotal').innerText = `Items Total: ₹${data.totalAmount.toFixed(2)}`;
-    document.getElementById('total').innerText = data.totalAmount.toFixed(2);
+        document.getElementById('itemsTotal').innerText = `Items Total: ₹${data.totalAmount.toFixed(2)}`;
+        document.getElementById('total').innerText = data.totalAmount.toFixed(2);
 
-    // Optionally list all items
-    const itemList = document.getElementById('itemList');
-    itemList.innerHTML = ''; // Clear existing items
-
-    data.items.forEach(item => {
-      const itemEl = document.createElement('p');
-      itemEl.textContent = `${item.productName} × ${item.quantity} = ₹${item.total.toFixed(2)}`;
-      itemList.appendChild(itemEl);
-    });
-
-  } catch (error) {
-    console.error('Error fetching cart summary:', error.message);
-  }
+        const itemList = document.getElementById('itemList');
+        itemList.innerHTML = '';
+        data.items.forEach(item => {
+            const itemEl = document.createElement('p');
+            itemEl.textContent = `${item.productName} × ${item.quantity} = ₹${item.total.toFixed(2)}`;
+            itemList.appendChild(itemEl);
+        });
+    } catch (error) {
+        console.error('Error fetching cart summary:', error.message);
+    }
 }
-
-
-
-
-
-
-
