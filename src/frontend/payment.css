@@ -171,6 +171,36 @@ background: var(--apricot);
   border-radius: 6px;
   cursor: pointer;
 }
+.address-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.address-group input,
+.address-group textarea {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.full {
+    flex: 1 1 100%;
+}
+
+.half {
+    flex: 1 1 48%;
+}
+
+.third {
+    flex: 1 1 30%;
+}
+
+.address-group textarea {
+    resize: vertical;
+}
+
 
 /* Layout */
 .container {

@@ -43,8 +43,7 @@
                 <div class="accordion-content">
                     <form id="contactForm">
                         <div class="address-group">
-                            <input type="text" id="contactnumber" name="contactnumber" placeholder="Enter your Contact Number" required />
-                            <input type="text" id="email" name="email" placeholder="Enter your Email ID" required />
+                            <input type="text" id="contact" name="contact" placeholder="Email or mobile number" required />
                         </div>
                     </form>
                 </div>
@@ -59,12 +58,15 @@
                 <div class="accordion-content">
                     <form id="addressForm">
                         <div class="address-group">
-                            <input type="text" id="street" name="street" placeholder="Enter your Street name" required />
-                            <input type="text" id="city" name="city" placeholder="Enter your city" required />
-                            <input type="text" id="pincode" name="pincode" placeholder="Pincode" required />
-                            <input type="text" id="state" name="state" placeholder="Enter your state" required />
-                            <input type="text" id="country" name="country" placeholder="Country Name" required />
-                            <textarea placeholder="Nearby locator" required></textarea>
+                            <input type="text" id="country" name="country" placeholder="Country Name"  class="full" required />
+                            <input type="text" id="first" name="first" placeholder="First Name"  class="half" required />
+                            <input type="text" id="last" name="last" placeholder="Last Name"  class="half" required />
+                            <input type="text" id="address" name="Address" placeholder="Address" class="full" required />
+                            <input type="text" id="city" name="city" placeholder="City"  class="third" required />
+                            <input type="text" id="pincode" name="pincode" placeholder="Pincode"   class="third" required />
+                            <input type="text" id="state" name="state" placeholder="State" class="third" required />
+                            <input type="text" id="Phone" name="Phone" placeholder="Phone" class="full" required />
+                              <textarea placeholder="Nearby locator" required></textarea>
                         </div>
                         <button type="button" onclick="addNewAddress()">+ Add Another Address</button>
                     </form>
