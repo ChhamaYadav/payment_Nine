@@ -110,3 +110,22 @@ async function fetchCartSummary() {
         console.error('Error fetching cart summary:', error.message);
     }
 }
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const paymentRadios = document.querySelectorAll('input[name="payment"]');
+    const cardDetails = document.getElementById("credit-card-details");
+    const upiDetails = document.getElementById("upi-details");
+
+    function togglePaymentDetails() {
+        const selected = document.querySelector('input[name="payment"]:checked').id;
+        cardDetails.style.display = selected === "credit-card" ? "block" : "none";
+        upiDetails.style.display = selected === "upi" ? "block" : "none";
+    }
+
+    paymentRadios.forEach(radio => {
+        radio.addEventListener("change", togglePaymentDetails);
+    });
+
+    togglePaymentDetails(); // Run on load
+});

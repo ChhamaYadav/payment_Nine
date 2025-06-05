@@ -403,3 +403,270 @@ footer {
     font-size: 13px;
     color: #999;
 }
+
+/* PAYMENT SECTION STYLES */
+.accordion-section .note {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0.2rem 0 1rem 0;
+}
+
+.card-details {
+    background-color: #f7f7f7;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+    max-width: 500px;
+}
+
+.card-details input[type="text"],
+.card-details input[type="password"] {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.card-details .row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.card-details .row input {
+    flex: 1;
+    min-width: 120px;
+}
+
+.card-details .checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+}
+
+.card-details .checkbox input {
+    transform: scale(1.2);
+}
+
+.accordion-content label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+.accordion-content label img {
+    height: 28px;
+}
+
+.other-options {
+    margin-top: 2rem;
+    background-color: #f0f0f0;
+    padding: 12px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 500px;
+}
+
+.other-options label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.other-options img.icon {
+    height: 24px;
+}
+
+/* Responsive tweaks */
+@media screen and (max-width: 600px) {
+    .card-details .row {
+        flex-direction: column;
+    }
+}
+/* PAYMENT SECTION STYLES */
+.accordion-section .note {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0.2rem 0 1rem 0;
+}
+
+.card-details {
+    background-color: #f7f7f7;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+    max-width: 500px;
+}
+
+.card-details input[type="text"],
+.card-details input[type="password"] {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.card-details .row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.card-details .row input {
+    flex: 1;
+    min-width: 120px;
+}
+
+.card-details .checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+}
+
+.card-details .checkbox input {
+    transform: scale(1.2);
+}
+
+.accordion-content label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+.accordion-content label img {
+    height: 28px;
+}
+
+.other-options {
+    margin-top: 2rem;
+    background-color: #f0f0f0;
+    padding: 12px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 500px;
+}
+
+.other-options label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.other-options img.icon {
+    height: 24px;
+}
+
+/* Responsive tweaks */
+@media screen and (max-width: 600px) {
+    .card-details .row {
+        flex-direction: column;
+    }
+}
+
+.accordion-content label input[type="radio"] {
+    transform: scale(1.2);
+    margin-right: 8px;
+}
+.payment-container {
+  background: #fde5cc;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 500px;
+  margin: auto;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.payment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.payment-radio {
+  display: flex;
+  align-items: center;
+  gap: 0.5px;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.payment-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.payment-option input[type="radio"] {
+  transform: scale(1.2);
+  margin-right: 6px;
+}
+
+.payment-info {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.card-icons {
+  display: flex;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.card-icons img {
+  height: 24px;
+  margin-left: 6px;
+}
+
+.card-details input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+}
+
+.row input {
+  flex: 1;
+}
+
+.checkbox {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+
+
