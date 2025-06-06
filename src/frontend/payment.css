@@ -104,11 +104,6 @@ background: var(--apricot);
   min-width: 800px;
 }
 
-.summary {
-  flex: 1;
-  min-width: 35%;
-}
-
 .checkout-form {
     flex: 2;
     min-width: 300px;
@@ -149,28 +144,7 @@ background: var(--apricot);
   margin-bottom: 10px;
 }
 
-.summary {
-  flex: 1;
-  background: #fdf7f4;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
 
-.summary input {
-  width: 100%;
-  padding: 8px;
-  margin: 8px 0;
-}
-
-.summary button {
-  padding: 8px 16px;
-  background: #561C24;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
 .address-group {
     display: flex;
     flex-wrap: wrap;
@@ -203,13 +177,6 @@ background: var(--apricot);
 
 
 /* Layout */
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 20px 40px;
-    gap: 20px;
-}
 
 .order-item {
   display: flex;
@@ -241,22 +208,6 @@ background: var(--apricot);
   color: #5E503F;
 }
 
-
-.summary {
-    flex: 1;
-    min-width: 250px;
-    background: var(--buttermilk);
-    padding: 20px;
-    border-radius: 10px;
-}
-
-.summary-row {
-  display: flex;
-  justify-content: space-between;
-  margin: 6px 0;
-  font-size: 1rem;
-}
-
 .total-row {
   font-weight: bold;
   font-size: 1.1rem;
@@ -283,10 +234,10 @@ background: var(--apricot);
     color:white;
     border: none;
     cursor: pointer;
-    border-radius: 4ppx;
+    border-radius: 4px;
 }
 
-.apply-btn: hover{
+.apply-btn:hover {
 background-color: var(--secondary);
 }
 
@@ -399,6 +350,36 @@ aside {
     top: 20px;
     align-self:flex-start;
 }
+
+.summary {
+    flex: 1;
+    min-width: 250px;
+    background: var(--buttermilk);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 6px 0;
+  font-size: 1rem;
+}
+
+.summary input {
+  width: 100%;
+  padding: 8px;
+  margin: 8px 0;
+}
+
+.summary button {
+  padding: 8px 16px;
+  background: #561C24;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
 .summary h3 {
     font-size: 18px;
     color: #561C24;
@@ -412,14 +393,7 @@ aside {
     width: 100%;
     margin-bottom: 10px;
 }
-.summary button {
-    background-color: #561C24;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-}
+
 .summary button:hover {
     background-color: #3d141a;
 }
@@ -590,55 +564,6 @@ footer {
         flex-direction: column;
     }
 }
-/* PAYMENT SECTION STYLES */
-.accordion-section .note {
-    font-size: 0.9rem;
-    color: #666;
-    margin: 0.2rem 0 1rem 0;
-}
-
-.card-details {
-    background-color: #f7f7f7;
-    padding: 15px;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-top: 1rem;
-    max-width: 500px;
-}
-
-.card-details input[type="text"],
-.card-details input[type="password"] {
-    padding: 12px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 100%;
-}
-
-.card-details .row {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
-.card-details .row input {
-    flex: 1;
-    min-width: 120px;
-}
-
-.card-details .checkbox {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.95rem;
-    margin-top: 0.5rem;
-}
-
-.card-details .checkbox input {
-    transform: scale(1.2);
-}
 
 .accordion-content label {
     display: flex;
@@ -714,29 +639,39 @@ footer {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-top: 10px;
+  margin: 10px 0;
 }
 
 .payment-option input[type="radio"] {
-  transform: scale(1.2);
-  margin-right: 6px;
+  margin: 0;
+    transform: scale(1.2);
 }
 
 .payment-info {
   display: flex;
-  flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+    gap: 12px;
 }
 
-
+/* FIX: Align icons within label */
 .card-icons {
   display: flex;
-  gap: 6px;
-  margin-top: 4px;
+    align-items: center;
+    gap: 6px;
 }
 
-.card-icons img {
+.card-icons img,
+.payment-option label img.icon {
   height: 24px;
-  margin-left: 6px;
+}
+
+/* Optional cleanup for spacing */
+.accordion-section .note {
+  margin: 0.5rem 0 1rem 2px;
+  font-size: 0.85rem;
+  color: #555;
 }
 
 .card-details input {
