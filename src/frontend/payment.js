@@ -96,16 +96,29 @@ async function fetchCartSummary() {
         const data = await response.json();
         console.log('Cart Data:', data);
 
-        document.getElementById('itemsTotal').innerText = `Items Total: ₹${data.totalAmount.toFixed(2)}`;
+        document.getElementById('itemsTotal').innerText = `₹${data.totalAmount.toFixed(2)}`;
         document.getElementById('total').innerText = data.totalAmount.toFixed(2);
 
         const itemList = document.getElementById('itemList');
         itemList.innerHTML = '';
         data.items.forEach(item => {
-            const itemEl = document.createElement('p');
-            itemEl.textContent = `${item.productName} × ${item.quantity} = ₹${item.total.toFixed(2)}`;
+            const itemEl = document.createElement('div');
+            itemEl.className = 'order-item';
+
+            // Use placeholder if imageURL is null
+            const imgSrc = item.imageURL ? item.imageURL : 'https://via.placeholder.com/60';
+
+            itemEl.innerHTML = `
+                <img src="${imgSrc}" alt="${item.productName}" class="item-img">
+                <div class="item-details">
+                    <p class="item-name">${item.productName}</p>
+                    <p class="item-price">₹${item.total.toFixed(2)} (${item.quantity} × ₹${item.price.toFixed(2)})</p>
+                </div>
+            `;
+
             itemList.appendChild(itemEl);
         });
+
     } catch (error) {
         console.error('Error fetching cart summary:', error.message);
     }

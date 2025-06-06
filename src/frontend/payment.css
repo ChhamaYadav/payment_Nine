@@ -211,12 +211,58 @@ background: var(--apricot);
     gap: 20px;
 }
 
+.order-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 1rem;
+}
+
+.item-img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  margin-right: 1rem;
+  border-radius: 6px;
+}
+
+.item-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.item-name {
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+
+.item-price {
+  color: #5E503F;
+}
+
+
 .summary {
     flex: 1;
     min-width: 250px;
     background: var(--buttermilk);
     padding: 20px;
     border-radius: 10px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 6px 0;
+  font-size: 1rem;
+}
+
+.total-row {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-top: 10px;
+  border-top: 1px solid #ccc;
+  padding-top: 8px;
 }
 
 .coupon-row{

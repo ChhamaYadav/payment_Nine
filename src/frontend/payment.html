@@ -157,14 +157,33 @@
         <aside class="summary" id="order-summary">
             <h3>Order Summary</h3>
             <div id="itemList"></div>
-            <p id="itemsTotal">Items Total: ₹0</p>
+
+            <div class="summary-row">
+                <span class="label">Items Total:</span>
+                <span class="value" id="itemsTotal">₹0</span>
+            </div>
+
+            <div class="summary-row">
+                <span class="label">Shipping:</span>
+                <span class="value" id="shippingCost">₹50</span> <!-- set default or update dynamically -->
+            </div>
+
             <div class="coupon-row">
                 <input type="text" id="coupon" placeholder="Enter Code">
-                <button class="apply-btn"> Apply</button>
+                <button class="apply-btn">Apply</button>
             </div>
-            <p id="discount">Discount: ₹0</p>
-            <h4>Total: ₹<span id="total">0</span></h4>
+
+            <div class="summary-row">
+                <span class="label">Discount:</span>
+                <span class="value" id="discount">₹0</span>
+            </div>
+
+            <div class="summary-row total-row">
+                <span class="label">Total:</span>
+                <span class="value" id="total">₹0</span>
+            </div>
         </aside>
+
     </div>
 </main>
 
