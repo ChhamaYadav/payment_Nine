@@ -129,3 +129,47 @@ document.addEventListener("DOMContentLoaded", () => {
 
     togglePaymentDetails(); // Run on load
 });
+
+document.addEventListener("DOMContentLoaded",()=>{
+    fetchCartSummary()
+});
+
+//function fetchOrderSummary() { console.log('Hitting fetchCartSummary()');
+// const userId=12;
+//  fetch('http://localhost:9091/payment/cartsummary/${userId}')  // Replace with your API endpoint
+//    .then(response => {
+//      if (!response.ok) {
+//        throw new Error("Network response was not ok");
+//      }
+//      return response.json(); // Assuming API returns JSON
+//    })
+//    .then(data => {
+//      displaySummary(data);
+//    })
+//    .catch(error => {
+//      console.error("There was a problem with the fetch:", error);
+//      document.getElementById('summary-content').innerText = "Failed to load summary.";
+//    });
+//}
+//
+//function displaySummary(data) {
+//  const summaryContainer = document.getElementById("summary-content");
+//
+//  // Clear previous data
+//  summaryContainer.innerHTML = "";
+//
+//  // Example rendering logic
+//  const itemsHTML = data.items.map(item => `
+//    <div class="summary-item">
+//      <span>${item.name}</span>
+//      <span>Qty: ${item.quantity}</span>
+//      <span>₹${item.price}</span>
+//    </div>
+//  `).join("");
+//
+//  const totalHTML = `<div class="summary-total"><strong>Total:</strong> ₹${data.total}</div>`;
+//
+//  summaryContainer.innerHTML = itemsHTML + totalHTML;
+//}
+
+
