@@ -214,9 +214,34 @@ background: var(--apricot);
 .summary {
     flex: 1;
     min-width: 250px;
-    background: #E8D8C4;
+    background: var(--buttermilk);
     padding: 20px;
     border-radius: 10px;
+}
+
+.coupon-row{
+    display:flex;
+    align-items:center;
+    gap: 10px;
+    margin-top:10px;
+}
+
+.coupon-row input{
+    flex:1;
+    padding: 6px;
+}
+
+.apply-btn{
+    padding: 6px 12px;
+    background-color: var(--primary);
+    color:white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4ppx;
+}
+
+.apply-btn: hover{
+background-color: var(--secondary);
 }
 
 .accordion-content {
