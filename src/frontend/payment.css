@@ -179,7 +179,7 @@ background: var(--apricot);
 
 .address-group input,
 .address-group textarea {
-    padding: 5px;
+    padding: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
@@ -231,6 +231,29 @@ background: var(--apricot);
   transition: all 0.3s ease;
 }
 
+.applyCouponBtn,
+.paynow,
+.addNewAddress
+{
+  background-color: var(--primary);
+  border: none;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.paynow{
+  width: 100%;
+}
+
+.applyCouponBtn:hover,
+ .paynow:hover,
+ .addNewAddress:hover{
+  background-color: var(--secondary);
+}
+
 
 .checkout-section.collapsed .form-body {
   display: none;
@@ -256,16 +279,12 @@ background: var(--apricot);
     padding: 10px 0;
 }
 
-.accordion-section.active .accordion-content {
-    display: block;
-}
-
 .accordion-section h2 {
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 0;
+    padding: 0.5rem 0;
     border-bottom: 1px solid #ccc;
 }
 
@@ -303,6 +322,12 @@ label input[type="checkbox"] {
 }
 
 /* Summary Section */
+
+aside {
+    position: sticky;
+    top: 20px;
+    align-self:flex-start;
+}
 .summary h3 {
     font-size: 18px;
     color: #561C24;
