@@ -71,7 +71,9 @@ function addNewAddress() {
     addressGroup.appendChild(newTextarea);
 }
 
+// Store userId and totalAmount in JS variables (you already do this)
 const userId = 12;
+let totalAmount = 0;
 
 async function fetchCartSummary() {
     try {
@@ -79,20 +81,19 @@ async function fetchCartSummary() {
         if (!response.ok) throw new Error('Failed to load cart summary');
 
         const data = await response.json();
-        console.log('Cart Data:', data);
+        totalAmount = data.totalAmount;
 
-        document.getElementById('itemsTotal').innerText = `₹${data.totalAmount.toFixed(2)}`;
-        document.getElementById('total').innerText = data.totalAmount.toFixed(2);
+        document.getElementById('itemsTotal').innerText = `₹${totalAmount.toFixed(2)}`;
+        document.getElementById('total').innerText = totalAmount.toFixed(2);
 
         const itemList = document.getElementById('itemList');
         itemList.innerHTML = '';
+
         data.items.forEach(item => {
             const itemEl = document.createElement('div');
             itemEl.className = 'order-item';
 
-            // Use placeholder if imageURL is null
             const imgSrc = item.imageURL ? item.imageURL : 'https://placehold.co/60x60';
-
             itemEl.innerHTML = `
                 <img src="${imgSrc}" alt="${item.productName}" class="item-img">
                 <div class="item-details">
@@ -108,6 +109,43 @@ async function fetchCartSummary() {
         console.error('Error fetching cart summary:', error.message);
     }
 }
+
+async function applyCoupon() {
+    const couponCode = document.getElementById("coupon").value;
+
+    if (!couponCode) {
+        alert("Please enter a coupon code");
+        return;
+    }
+
+    const requestPayload = {
+        userId,
+        couponCode,
+        totalAmount
+    };
+
+    try {
+        const response = await fetch("http://localhost:9091/payment/coupon/apply", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(requestPayload)
+        });
+
+        if (!response.ok) throw new Error("Coupon apply request failed");
+
+        const data = await response.json();
+        alert(`Message: ${data.message}\nDiscounted Amount: ₹${data.discountedAmount.toFixed(2)}`);
+
+    } catch (error) {
+        console.error("Error applying coupon:", error);
+        alert("Failed to apply coupon.");
+    }
+}
+// Attach the event listener AFTER DOM is loaded
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById('apply-btn').addEventListener('click', applyCoupon);
+  fetchCartSummary();
+});
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -170,33 +208,33 @@ document.addEventListener("DOMContentLoaded",()=>{
 //  summaryContainer.innerHTML = itemsHTML + totalHTML;
 //}
 
-async function applyCoupon() {
-console.log("Coupon applied");
-
-    const requestPayload = {
-        userId: parseInt(document.getElementById("userId").value),
-        couponCode: document.getElementById("coupon").value,
-        totalAmount: parseFloat(document.getElementById("totalAmount").value)
-    };
-
-    try {
-        const response = await fetch("http://localhost:9091/payment/coupon/apply", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(requestPayload)
-        });
-
-        const data = await response.json();
-        console.log("Coupon Response:", data);
-
-        // Show result on UI
-        alert(`Message: ${data.message}\nDiscounted Amount: ${data.discountedAmount}`);
-    } catch (error) {
-        console.error("Error applying coupon:", error);
-        alert("Failed to apply coupon.");
-    }
-}
+//async function applyCoupon() {
+//console.log("Coupon applied");
+//
+//    const requestPayload = {
+//        userId: parseInt(document.getElementById("userId").value),
+//        couponCode: document.getElementById("coupon").value,
+//        totalAmount: parseFloat(document.getElementById("totalAmount").value)
+//    };
+//
+//    try {
+//        const response = await fetch("http://localhost:9091/payment/coupon/apply", {
+//            method: "POST",
+//            headers: {
+//                "Content-Type": "application/json"
+//            },
+//            body: JSON.stringify(requestPayload)
+//        });
+//
+//        const data = await response.json();
+//        console.log("Coupon Response:", data);
+//
+//        // Show result on UI
+//        alert(`Message: ${data.message}\nDiscounted Amount: ${data.discountedAmount}`);
+//    } catch (error) {
+//        console.error("Error applying coupon:", error);
+//        alert("Failed to apply coupon.");
+//    }
+//}
 
 
