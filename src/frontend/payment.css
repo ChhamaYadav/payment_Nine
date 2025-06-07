@@ -152,11 +152,24 @@ background: var(--apricot);
 }
 
 .address-group input,
-.address-group textarea {
+.address-group textarea,
+.address-group select{
     padding: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+}
+
+.address-group select {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 1rem;
+    color: #333;
+    background-color: #fff;
+    appearance: none; /* Remove default dropdown styling */
 }
 
 .full {

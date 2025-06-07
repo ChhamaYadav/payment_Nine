@@ -58,7 +58,14 @@
                 <div class="accordion-content">
                     <form id="addressForm">
                         <div class="address-group">
-                            <input type="text" id="country" name="country" placeholder="Country Name"  class="full" required />
+                            <select id="countrySelect" class="full" required>
+                                <option value="" disabled selected>Select Country/Region</option>
+                                <option value="India">India</option>
+                                <option value="USA">USA</option>
+                                <option value="UK">UK</option>
+                                <option value="Australia">Australia</option>
+                                <option value="Other">Other</option>
+                            </select>
                             <input type="text" id="first" name="first" placeholder="First Name"  class="half" required />
                             <input type="text" id="last" name="last" placeholder="Last Name"  class="half" required />
                             <input type="text" id="address" name="Address" placeholder="Address" class="full" required />
@@ -66,7 +73,7 @@
                             <input type="text" id="pincode" name="pincode" placeholder="Pincode"   class="third" required />
                             <input type="text" id="state" name="state" placeholder="State" class="third" required />
                             <input type="text" id="Phone" name="Phone" placeholder="Phone" class="full" required />
-                              <textarea placeholder="Nearby locator" required></textarea>
+                            <textarea placeholder="Nearby locator" required></textarea>
                         </div>
                         <button class="addNewAddress" type="button" onclick="addNewAddress()">+ Add Another Address</button>
                     </form>

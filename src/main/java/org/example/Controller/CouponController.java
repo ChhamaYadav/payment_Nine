@@ -4,9 +4,14 @@ import org.apache.coyote.Response;
 import org.example.Service.CouponService;
 import org.example.dto.CouponRequest;
 import org.example.dto.CouponResponse;
+import org.example.dto.ShippingRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.util.HashMap;
+import java.util.Map;
+
+import java.util.HashMap;
 
 @CrossOrigin(origins = "http://localhost:63342")
 @RestController
@@ -44,4 +49,34 @@ public class CouponController {
         return ResponseEntity.ok(couponResponse);
     }
 
+    @PostMapping("/shipping/calculate")
+    public ResponseEntity<?> calculateController(@RequestBody ShippingRequest request) {
+        String country= request.getCountry().trim().toLowerCase();
+        double shippingAmount;
+        switch (country) {
+            case "india":
+                shippingAmount = 150.0;
+                break;
+            case "usa":
+                shippingAmount = 1300.0;
+                break;
+            case "uk":
+                shippingAmount = 1250.0;
+                break;
+            case "australia":
+                shippingAmount = 1280.0;
+                break;
+            default:
+                shippingAmount = 1400.0; // default for unsupported/other countries
+                break;
+        }
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("Success",true);
+        response.put("shippingAmount",shippingAmount);
+        response.put("message","Shipping calculated for"+country);
+
+        return ResponseEntity.ok(response);
+
+    }
 }
