@@ -136,6 +136,21 @@ async function applyCoupon() {
         const data = await response.json();
         alert(`Message: ${data.message}\nDiscounted Amount: ₹${data.discountedAmount.toFixed(2)}`);
 
+        if (data.success) {
+                    const discountAmount = totalAmount - data.discountedAmount;
+
+                    // ✅ Update discount and new total in the DOM
+                    document.getElementById('discount').innerText = `₹${discountAmount.toFixed(2)}`;
+                    document.getElementById('total').innerText = `₹${data.discountedAmount.toFixed(2)}`;
+
+                    // ✅ Optional: Update the variable too if needed later
+                    totalAmount = data.discountedAmount;
+
+                    alert(`✅ ${data.message}\nYou saved ₹${discountAmount.toFixed(2)}!`);
+                } else {
+                    alert("❌ Coupon failed: " + data.message);
+                }
+
     } catch (error) {
         console.error("Error applying coupon:", error);
         alert("Failed to apply coupon.");
