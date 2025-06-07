@@ -482,15 +482,34 @@ footer {
 }
 
 .card-details {
-    background-color: #f7f7f7;
-    padding: 15px;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-top: 1rem;
-    max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin-top: 10px;
 }
+
+.card-details input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+.card-details .row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.card-details .row input {
+  flex: 1;
+  min-width: 120px;
+}
+
 
 .card-details input[type="text"],
 .card-details input[type="password"] {
@@ -639,32 +658,39 @@ footer {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin: 10px 0;
+  margin: 15px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #fff;
 }
 
 .payment-option input[type="radio"] {
+  transform: scale(1.2);
   margin: 0;
-    transform: scale(1.2);
+  flex-shrink: 0;
 }
+
 
 .payment-info {
   display: flex;
     align-items: center;
     justify-content: space-between;
-    flex: 1;
-    gap: 12px;
+    width: 100%;
 }
 
 /* FIX: Align icons within label */
 .card-icons {
   display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
 }
 
 .card-icons img,
 .payment-option label img.icon {
   height: 24px;
+    width: auto;
 }
 
 /* Optional cleanup for spacing */
@@ -672,14 +698,6 @@ footer {
   margin: 0.5rem 0 1rem 2px;
   font-size: 0.85rem;
   color: #555;
-}
-
-.card-details input {
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
 }
 
 .row {

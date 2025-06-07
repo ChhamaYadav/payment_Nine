@@ -25,11 +25,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Contact Info validation
-    document.getElementById('contactNumber').addEventListener('blur', validateContactInfo);
-    document.getElementById('contactEmail').addEventListener('blur', validateContactInfo);
+    document.getElementById('contact').addEventListener('blur', validateContactInfo);
 
     // Apply coupon button
-    document.getElementById('applyCouponBtn').addEventListener('click', applyCoupon);
+    document.getElementById('apply-btn').addEventListener('click', applyCoupon);
 
     // Fetch cart summary
     fetchCartSummary();
@@ -47,33 +46,19 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function validateContactInfo() {
-    const number = document.getElementById('contactNumber').value.trim();
-    const email = document.getElementById('contactEmail').value.trim();
-    const tick = document.getElementById('contactTick');
+    const contactValue = document.getElementById('contact').value.trim();
+        const tick = document.getElementById('contactTick');
 
-    if (number && email.includes('@')) {
-        tick.style.display = 'inline';
-        document.getElementById('contactSection').classList.add('completed');
-    } else {
-        tick.style.display = 'none';
-        document.getElementById('contactSection').classList.remove('completed');
-    }
-}
+        const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contactValue);
+        const isPhone = /^[0-9]{10}$/.test(contactValue);  // Adjust as per country format
 
-function applyCoupon() {
-    const code = document.getElementById('coupon').value.trim();
-    const totalEl = document.getElementById('total');
-    const discountEl = document.getElementById('discount');
-    let total = 2000;
-
-    if (code === 'SAVE10') {
-        total -= 200;
-        discountEl.textContent = "Coupon applied: -₹200";
-    } else {
-        discountEl.textContent = "Invalid code";
-    }
-
-    totalEl.textContent = total;
+        if (isEmail || isPhone) {
+            tick.style.display = 'inline';
+            document.getElementById('contactSection').classList.add('completed');
+        } else {
+            tick.style.display = 'none';
+            document.getElementById('contactSection').classList.remove('completed');
+        }
 }
 
 function addNewAddress() {
@@ -106,7 +91,7 @@ async function fetchCartSummary() {
             itemEl.className = 'order-item';
 
             // Use placeholder if imageURL is null
-            const imgSrc = item.imageURL ? item.imageURL : 'https://via.placeholder.com/60';
+            const imgSrc = item.imageURL ? item.imageURL : 'https://placehold.co/60x60';
 
             itemEl.innerHTML = `
                 <img src="${imgSrc}" alt="${item.productName}" class="item-img">
@@ -184,5 +169,34 @@ document.addEventListener("DOMContentLoaded",()=>{
 //
 //  summaryContainer.innerHTML = itemsHTML + totalHTML;
 //}
+
+async function applyCoupon() {
+console.log("Coupon applied");
+
+    const requestPayload = {
+        userId: parseInt(document.getElementById("userId").value),
+        couponCode: document.getElementById("coupon").value,
+        totalAmount: parseFloat(document.getElementById("totalAmount").value)
+    };
+
+    try {
+        const response = await fetch("http://localhost:9091/payment/coupon/apply", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(requestPayload)
+        });
+
+        const data = await response.json();
+        console.log("Coupon Response:", data);
+
+        // Show result on UI
+        alert(`Message: ${data.message}\nDiscounted Amount: ${data.discountedAmount}`);
+    } catch (error) {
+        console.error("Error applying coupon:", error);
+        alert("Failed to apply coupon.");
+    }
+}
 
 
