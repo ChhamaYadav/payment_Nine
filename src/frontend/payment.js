@@ -95,7 +95,10 @@ async function fetchCartSummary() {
 
             const imgSrc = item.imageURL ? item.imageURL : 'https://placehold.co/60x60';
             itemEl.innerHTML = `
-                <img src="${imgSrc}" alt="${item.productName}" class="item-img">
+                <div class="item-image-wrapper">
+                    <img src="${imgSrc}" alt="${item.productName}" class="item-img">
+                    <span class="quantity-badge">x${item.quantity}</span>
+                  </div>
                 <div class="item-details">
                     <p class="item-name">${item.productName}</p>
                     <p class="item-price">₹${item.total.toFixed(2)} (${item.quantity} × ₹${item.price.toFixed(2)})</p>
