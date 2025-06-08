@@ -185,6 +185,38 @@ document.addEventListener("DOMContentLoaded",()=>{
     fetchCartSummary()
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+    const countrySelect = document.getElementById("countrySelect");
+
+    countrySelect.addEventListener("change", async () => {
+        const selectedCountry = countrySelect.value;
+
+        try {
+           const response = await fetch("http://localhost:9091//payment/coupon/shipping/calculate", {
+                           method: "POST",
+                           headers: {
+                               "Content-Type": "application/json"
+                           },
+                           body: JSON.stringify({ country: selectedCountry })
+                       });
+            if (!response.ok) throw new Error("Failed to fetch shipping charges");
+
+            const data = await response.json();
+            console.log("Shipping Response:", data);
+
+            // Update the UI
+            document.getElementById("shippingCost").innerText = `₹${data.shippingAmount.toFixed(2)}`;
+
+            // Update the total
+            const newTotal = totalAmount + data.shippingAmount;
+            document.getElementById("total").innerText = `₹${newTotal.toFixed(2)}`;
+
+        } catch (error) {
+            console.error("Error fetching shipping charge:", error);
+        }
+    });
+});
+
 //function fetchOrderSummary() { console.log('Hitting fetchCartSummary()');
 // const userId=12;
 //  fetch('http://localhost:9091/payment/cartsummary/${userId}')  // Replace with your API endpoint

@@ -51,6 +51,7 @@ public class CouponController {
 
     @PostMapping("/shipping/calculate")
     public ResponseEntity<?> calculateController(@RequestBody ShippingRequest request) {
+        System.out.println("Calling shipping service");
         String country= request.getCountry().trim().toLowerCase();
         double shippingAmount;
         switch (country) {
